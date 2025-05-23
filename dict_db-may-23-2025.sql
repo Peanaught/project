@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2025 at 01:17 AM
+-- Generation Time: May 23, 2025 at 05:12 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,10 +43,36 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `username`, `password`, `firstname`, `lastname`, `photo`, `created_on`, `role`) VALUES
-(1, 'dictaklan', '$2y$10$fLK8s7ZDnM.1lE7XMP.J6OuPbQ.DPUVKBo7rENnQY7gYq0xAzsKJy', 'DICT', 'AKLAN', 'logo-mini.svg', '2025-02-19', 'admin'),
+(1, 'dictaklan', '$2y$10$TdTMMIDqPAK4rbd6dTEtmugLKoCWmdhMRicuzUqkO.xGLRFTmuKRq', 'DICT', 'AKLAN', 'logo-mini.svg', '2025-02-19', 'admin'),
 (2, 'user12', 'pass', 'USER', 'LASTNAME', NULL, '2025-02-19', 'user'),
 (5, 'jude', '$2y$10$xzuVk/z7B.8qhzLte1DTtuMt4Q.7HkksQQhcvAH821C13as35IgpW', 'jude', 'jude', NULL, '2025-02-20', 'user'),
 (6, 'test', '$2y$10$1e5Ri7N2E9Jgd5NjYlnstu0C3s3BbbxJ2pEzflkkKJ1ttL4J72prS', 'test', 'test', NULL, '2025-02-20', 'user');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `photo` varchar(150) NOT NULL,
+  `created_on` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `firstname`, `lastname`, `photo`, `created_on`) VALUES
+(1, 'dictaklan', '$2y$10$fLK8s7ZDnM.1lE7XMP.J6OuPbQ.DPUVKBo7rENnQY7gYq0xAzsKJy', 'DICT', 'AKLAN', 'DICT-Logo.png', '2018-04-02'),
+(1, 'dictaklan', '$2y$10$fLK8s7ZDnM.1lE7XMP.J6OuPbQ.DPUVKBo7rENnQY7gYq0xAzsKJy', 'DICT', 'AKLAN', 'DICT-Logo.png', '2018-04-02'),
+(1, 'dictaklan', '$2y$10$fLK8s7ZDnM.1lE7XMP.J6OuPbQ.DPUVKBo7rENnQY7gYq0xAzsKJy', 'DICT', 'AKLAN', 'DICT-Logo.png', '2018-04-02'),
+(1, 'dictaklan', '$2y$10$fLK8s7ZDnM.1lE7XMP.J6OuPbQ.DPUVKBo7rENnQY7gYq0xAzsKJy', 'DICT', 'AKLAN', 'DICT-Logo.png', '2018-04-02');
 
 -- --------------------------------------------------------
 
@@ -337,17 +363,19 @@ INSERT INTO `municipalities` (`id`, `name`) VALUES
 
 CREATE TABLE `pnpki` (
   `id` int(11) NOT NULL,
-  `project_id` int(11) NOT NULL,
-  `project_name` varchar(255) NOT NULL,
-  `status` enum('active','inactive') NOT NULL DEFAULT 'active'
+  `application_type` enum('individual','organization') NOT NULL,
+  `agency` varchar(255) DEFAULT NULL,
+  `address` text NOT NULL,
+  `municipality_id` int(11) NOT NULL,
+  `status` enum('active','inactive') DEFAULT 'active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pnpki`
 --
 
-INSERT INTO `pnpki` (`id`, `project_id`, `project_name`, `status`) VALUES
-(1, 2, 'Test', 'active');
+INSERT INTO `pnpki` (`id`, `application_type`, `agency`, `address`, `municipality_id`, `status`) VALUES
+(1, 'individual', 'Hey', '1', 9, 'active');
 
 -- --------------------------------------------------------
 
@@ -487,7 +515,8 @@ ALTER TABLE `municipalities`
 -- Indexes for table `pnpki`
 --
 ALTER TABLE `pnpki`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `municipality_id` (`municipality_id`);
 
 --
 -- Indexes for table `tech4ed`
@@ -588,6 +617,12 @@ ALTER TABLE `wifi_bill`
 ALTER TABLE `free_wifi`
   ADD CONSTRAINT `fk_municipality_id` FOREIGN KEY (`municipality_id`) REFERENCES `municipalities` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_project_id` FOREIGN KEY (`project_id`) REFERENCES `free_wifi_projects` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `pnpki`
+--
+ALTER TABLE `pnpki`
+  ADD CONSTRAINT `pnpki_ibfk_1` FOREIGN KEY (`municipality_id`) REFERENCES `municipalities` (`id`);
 
 --
 -- Constraints for table `tech4ed`
