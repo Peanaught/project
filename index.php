@@ -1429,19 +1429,16 @@ https://templatemo.com/tm-575-leadership-event
         <footer class="site-footer">
             <div class="container">
                 <div class="row align-items-center">
-
-                    <div class="col-lg-12 col-12 border-bottom pb-5 mb-5">
+                    <div class="col-lg-12 col-12 border-top pt-5 mt-5">
                         <div class="d-flex">
                             <a href="index.html" class="navbar-brand">
                                 <img src="images/DICTLogo.png" alt="" style="height: 100px; width: 100px;">
                                 <span class="brand-text">DICT-Aklan Provincial Field Office</span>
                             </a>
-
-                          
                         </div> 
                     </div>
 
-                    <div class="col-lg-7 col-12 pb-5">
+                    <!-- <div class="col-lg-7 col-12 pb-5">
                         <ul class="footer-menu d-flex flex-wrap">
                             <li class="footer-menu-item"><a href="#" class="footer-menu-link">Our Department</a></li>
 
@@ -1449,8 +1446,8 @@ https://templatemo.com/tm-575-leadership-event
 
                             <li class="footer-menu-item"><a href="#" class="footer-menu-link">Privacy and Terms</a></li>
 
-                            <!-- <li class="footer-menu-item"><a href="#" class="footer-menu-link">Contact</a></li> -->
-                        </ul>
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Contact</a></li> -->
+                        <!-- </ul>
                     </div>
 
                         
@@ -1460,13 +1457,7 @@ https://templatemo.com/tm-575-leadership-event
                                 
                             <br>All Rights Reserved. 
           
-          					<br> <br> Developed by: <br> <a title="CSS Templates" rel="sponsored" href="" target="_blank"><img src="images/DICTLogo.png" alt="" style="height: 50px; width: 50px;">DICT </a></p>
-
-                            <!-- In the footer section -->
-<a href="#section_1" class="bi-arrow-up arrow-icon custom-link"></a>
-<a href="#section_1" class="bi-arrow-down arrow-down custom-link"></a>
-
-
+          					<br> <br> Developed by: <br> <a title="" rel="sponsored" href="" target="_blank"><img src="images/DICTLogo.png" alt="" style="height: 50px; width: 50px;">DICT </a></p> -->
 
 <script>
     window.addEventListener('scroll', function() {

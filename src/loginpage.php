@@ -67,17 +67,18 @@
                   </div>
                   <div class="form-group mt-3">
                     <label for="password" class="fw-medium">Password</label>
-                    <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter password" required>
+                    <div class="input-group">
+                      <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter password" required>
+                      <button class="btn text-primary border-0 position-absolute end-0 top-50 translate-middle-y" 
+                              style="z-index: 10; background: transparent;" 
+                              type="button" 
+                              id="togglePassword">
+                        <i class="mdi mdi-eye mdi-24px" id="toggleIcon"></i>
+                      </button>
+                    </div>
                   </div>
                   <div class="mt-3 d-grid gap-2">
                     <button type="submit" class="btn btn-block btn-primary btn-lg fw-medium auth-form-btn" name="login">Login</button>
-                  </div>
-                  <div class="my-2 d-flex justify-content-between align-items-center">
-                    <div class="form-check">
-                      <label class="form-check-label text-muted">
-                        <input type="checkbox" class="form-check-input"> Keep me signed in </label>
-                    </div>
-                    <a href="#" class="auth-link text-black">Forgot password?</a>
                   </div>
                 </form>
               </div>
@@ -102,5 +103,21 @@
     <script src="assets/js/hoverable-collapse.js"></script>
     <script src="assets/js/todolist.js"></script>
     <!-- endinject -->
+    <script>
+      document.getElementById('togglePassword').addEventListener('click', function() {
+        const password = document.getElementById('password');
+        const icon = document.getElementById('toggleIcon');
+        
+        if (password.type === 'password') {
+          password.type = 'text';
+          icon.classList.remove('mdi-eye');
+          icon.classList.add('mdi-eye-off');
+        } else {
+          password.type = 'password';
+          icon.classList.remove('mdi-eye-off');
+          icon.classList.add('mdi-eye');
+        }
+      });
+    </script>
   </body>
 </html>
