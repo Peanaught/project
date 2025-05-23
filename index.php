@@ -456,7 +456,7 @@ https://templatemo.com/tm-575-leadership-event
 
                                     <div class="row border-bottom pb-5 mb-5">
                                         <div class="col-lg-4 col-12">
-                                            <img src="images/tech4ed/Security On.gif" class="schedule-image gif-fluid" alt="" style="">
+                                            <img src="images/tech4ed/Security On.gif" class="schedule-image gif-fluid" alt="">
                                         </div>
 
                                         <div class="col-lg-8 col-12 mt-3 mt-lg-0">
